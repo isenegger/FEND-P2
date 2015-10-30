@@ -1,18 +1,14 @@
 /*
 Biography
+Note: no Twitter account. LinkedIn account inserted instead.
 */
-var bio = { // JSON formatted data
+var bio = {
   "name": "Andreas Isenegger",
   "role": "Software Engineer",
   "welcomeMessage": "Welcome to my Resume Page!",
   "contacts": {
     "mobile": "+41 76 400 9417",
     "email": "a.isenegger@gmail.com",
-    // "twitter": "", // No Twitter account
-    // TODO: Improve URI linking or remove; 29Oct-2015/ais
-    // "linkedIn": '<a href="https://www.linkedin.com/pub/andreas-isenegger/107/aa1/571" target="_blank">my career</a>',
-    // "github": '<a href="https://github.com/isenegger" target="_blank">my repo</a>',
-    // "blog" : '<a href="http://bitcontrol.ch/blog" target="_blank">my blog</a>',
     "linkedIn": "Andreas Isenegger",
     "github": "isenegger",
     "blog" : "bitcontrol.ch/blog",
@@ -87,7 +83,7 @@ bio.display(); // Run display() function
 /*
 Work
 */
-var work = { // JSON formatted data
+var work = {
   "jobs": [
     {
       "employer": "Bitcontrol GmbH",
@@ -117,10 +113,7 @@ var work = { // JSON formatted data
         "end": "Sep-2011",
         "start": "Feb-2005"
       },
-      "description": "Leading the Control Systems team of 8 software engineers working for "
-        + "the beamlines at the Swiss Light Source, a synchrotron radiation facility.<br>"
-        + "Writing software for such systems and integrating a variety of devices in the "
-        + "existing, Linux based control system environment."
+      "description": "Leading the Control Systems team of 8 software engineers working for the beamlines at the Swiss Light Source, a synchrotron radiation facility.<br>Writing software for such systems and integrating a variety of devices in the existing, Linux based control system environment."
     },
     {
       "employer": "Varian Medical Systems Imaging Laboratory GmbH",
@@ -130,11 +123,7 @@ var work = { // JSON formatted data
         "end": "Dec-2004",
         "start": "Apr-1999"
       },
-      "description": "Leading international projects and developing software for motion "
-        + "control systems of radiation therapy systems and treatment simulators. Frequent "
-        + "business trips to the London area in the UK were part of the job. Trips to the "
-        + "company's head quarters in the Silicon Valley and trips inside Europe for "
-        + "installations and engineering support were also part of it."
+      "description": "Leading international projects and developing software for motion control systems of radiation therapy systems and treatment simulators. Frequent business trips to the London area in the UK were part of the job. Trips to the company's head quarters in the Silicon Valley and trips inside Europe for installations and engineering support were also part of it."
     }
   ]
 };
@@ -183,7 +172,7 @@ work.display(); // Run display() function
 /*
 Projects
 */
-var projects = { // JSON formatted data
+var projects = {
   "projects": [
     {
       "title": "Parallel Robotics Inspired Goniometer (PRIGo)",
@@ -191,9 +180,7 @@ var projects = { // JSON formatted data
         "end": "Aug-2015",
         "start": "Feb-2015"
       },
-      "description": "Repair an existing PRIGo device and calibrate it.<br>"
-        + "The repair includes mechanics, hardware, software and configuration. The device is "
-        + "part of the Macro-Molecular X-ray beamline X06DA at the Swiss Light Source.",
+      "description": "Repair an existing PRIGo device and calibrate it.<br>The repair includes mechanics, hardware, software and configuration. The device is part of the Macro-Molecular X-ray beamline X06DA at the Swiss Light Source.",
       "images": ["images/SLS_X06DA_Prigo_500x250.jpg"
       ]
     },
@@ -203,11 +190,7 @@ var projects = { // JSON formatted data
         "end": "Jan-2015",
         "start": "Feb-2014"
       },
-      "description": "Design and create a product for the Macro-Molecular X-ray beamlines "
-        + "at the Swiss Light Source.<br>"
-        + "The device controls the electrical current through the sample holder coil at the "
-        + "endstation and senses if a sample pin is mounted or not. It returns this information "
-        + "to the control system.",
+      "description": "Design and create a product for the Macro-Molecular X-ray beamlines at the Swiss Light Source.<br>The device controls the electrical current through the sample holder coil at the endstation and senses if a sample pin is mounted or not. It returns this information to the control system.",
       "images": ["images/Bitcontrol_SMC_frontView_375x250.jpg"
       ]
     },
@@ -217,11 +200,7 @@ var projects = { // JSON formatted data
         "end": "Jan-2014",
         "start": "Aug-2013"
       },
-      "description": "Design, implement, test and document a software for a light controller.<br>"
-        + "The controller has these features: form size: electronic cut-in unit, DALI inputs "
-        + "and outputs, , STM32 type micro-controller, bootstrap loader, NV configuration block, "
-        + "RS-485 bus, sensor bus, and more.<br>The device is used throughout the main "
-        + "product portfolio of a large industrial lighting company.",
+      "description": "Design, implement, test and document a software for a light controller.<br>The controller has these features: form size: electronic cut-in unit, DALI inputs and outputs, , STM32 type micro-controller, bootstrap loader, NV configuration block, RS-485 bus, sensor bus, and more.<br>The device is used throughout the main product portfolio of a large industrial lighting company.",
       "images": [
       ]
     },
@@ -231,9 +210,7 @@ var projects = { // JSON formatted data
         "end": "Aug-2013",
         "start": "Jun-2013"
       },
-      "description": "Design, implement, test and document a DALI ballast software stack "
-        + "for a light controller according to the international DALI specifications.<br>"
-        + "The device is used in light controllers of a large industrial lighting company.",
+      "description": "Design, implement, test and document a DALI ballast software stack for a light controller according to the international DALI specifications.<br>The device is used in light controllers of a large industrial lighting company.",
       "images": [
       ]
     },
@@ -243,8 +220,7 @@ var projects = { // JSON formatted data
         "end": "Mar-2013",
         "start": "Oct-2011"
       },
-      "description": "Design, implement, test and document UAS software in a research "
-        + "environment.",
+      "description": "Design, implement, test and document UAS software in a research environment.",
       "images": [
       ]
     },
@@ -254,10 +230,7 @@ var projects = { // JSON formatted data
         "end": "Sep-2011",
         "start": "Feb-2011"
       },
-      "description": "Port a large scientific DAQ framework from the Diamond Light Source "
-        + "in the UK to the Swiss Light Source.<br>"
-        + "The framework is based on Java/Eclipse and its Rich Client Platform (RCP) plugin "
-        + "mechanism.",
+      "description": "Port a large scientific DAQ framework from the Diamond Light Source in the UK to the Swiss Light Source.<br>The framework is based on Java/Eclipse and its Rich Client Platform (RCP) plugin mechanism.",
       "images": [
       ]
     },
@@ -267,13 +240,7 @@ var projects = { // JSON formatted data
         "end": "Jan-2011",
         "start": "Feb-2005"
       },
-      "description": "Design, implement and test data acquisition and motion control systems "
-        + "for various beamlines at the Swiss Light Source.<br>"
-        + "Order and commission the hardware and implement the software of the control systems "
-        + "for the beamlines X02DA (TOMCAT), X10DA () and X06DA (MXIII).<br>"
-        + "Integrate many off-the-shelf as well as highly specific components as a major part "
-        + "of the work.<br>"
-        + "EPICS has been used as motion control framework, C/C++ and Java for programming.",
+      "description": "Design, implement and test data acquisition and motion control systems for various beamlines at the Swiss Light Source.<br>Order and commission the hardware and implement the software of the control systems for the beamlines X02DA (TOMCAT), X10DA () and X06DA (MXIII).<br>Integrate many off-the-shelf as well as highly specific components as a major part of the work.<br>EPICS has been used as motion control framework, C/C++ and Java for programming.",
       "images": ["images/SLS_X09LA_experimentationChamber_444x250.jpg"
       ]
     },
@@ -283,10 +250,7 @@ var projects = { // JSON formatted data
         "end": "2004",
         "start": "2003"
       },
-      "description": "Lead a team of four software engineers technically.<br>"
-        + "Design the motion control system for the On-Board Imaging system and lead the project "
-        + "through the prototype phase to a large exhibition show in Salt Lake City, Utah.<br>"
-        + "The project involved various trips to the US.",
+      "description": "Lead a team of four software engineers technically.<br>Design the motion control system for the On-Board Imaging system and lead the project through the prototype phase to a large exhibition show in Salt Lake City, Utah.<br>The project involved various trips to the US.",
       "images": ["images/VarianOBI_480x250.jpg"
       ]
     },
@@ -296,9 +260,7 @@ var projects = { // JSON formatted data
         "end": "2003",
         "start": "2001"
       },
-      "description": "Integrate the imaging detector robot arm into the treatment "
-        + "simulator as far as motion control is concerned.<br>"
-        + "The project involved various trips to the UK.",
+      "description": "Integrate the imaging detector robot arm into the treatment simulator as far as motion control is concerned.<br>The project involved various trips to the UK.",
       "images": ["images/VarianAcuity_480x250.jpg"
       ]
     }
@@ -344,7 +306,7 @@ projects.display(); // Run display() function
 /*
 Education
 */
-var education = { // JSON formatted data
+var education = {
   "schools": [
     {
       "name": "Cairns Language Center",
