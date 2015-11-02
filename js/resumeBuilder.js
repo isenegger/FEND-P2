@@ -31,7 +31,8 @@ bio.display = function() { // Define display() function
   $("#header").prepend(formattedRole);
   var formattedName = HTMLheaderName.replace("%data%", this.name);
   $("#header").prepend(formattedName);
-  var formattedBioPic = HTMLbioPic.replace("%data%", "images/portraitAndreas.jpg");
+  var formattedBioPic = HTMLbioPic.replace("%data%", "images/portraitAndreas.jpg")
+    .replace(/%name%/g, this.name);
   $("#header").append(formattedBioPic);
   var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", this.welcomeMessage);
   $("#header").append(formattedWelcomeMsg);
@@ -87,6 +88,7 @@ var work = {
   "jobs": [
     {
       "employer": "Bitcontrol GmbH",
+      "url": "http://bitcontrol.ch",
       "title": "Managing Director and Software Engineer",
       "location": "Baden, Switzerland",
       "dates": {
@@ -97,6 +99,7 @@ var work = {
     },
     {
       "employer": "RUAG Aviation",
+      "url": "http://www.ruag.com/aviation/aviation-home/",
       "title": "Software Engineer",
       "location": "Emmen, Switzerland",
       "dates": {
@@ -107,6 +110,7 @@ var work = {
     },
     {
       "employer": "Paul Scherrer Institute",
+      "url": "https://www.psi.ch/sls/",
       "title": "Team Leader, Software Engineer",
       "location": "Villigen, Switzerland",
       "dates": {
@@ -117,6 +121,7 @@ var work = {
     },
     {
       "employer": "Varian Medical Systems Imaging Laboratory GmbH",
+      "url": "https://www.varian.com/oncology",
       "title": "Project Leader, Development Engineer",
       "location": "Daettwil, Switzerland",
       "dates": {
@@ -129,30 +134,31 @@ var work = {
 };
 
 work.display = function() { // Define display() function
-  for (var job in this.jobs) {
+  this.jobs.forEach(function (job) {
     $("#workExperience").append(HTMLworkStart);
 
     var formattedWorkEmployer = HTMLworkEmployer.replace(
-      "%data%", this.jobs[job].employer);
+      "%data%", job.employer).replace(
+      "#", job.url);
 
     var formattedWorkTitle = HTMLworkTitle.replace(
-      "%data%", this.jobs[job].title);
+      "%data%", job.title);
 
     var formattedWorkDates = HTMLworkDates.replace(
-      "%dataFrom%", this.jobs[job].dates.start);
-    if (this.jobs[job].dates.end === "") {
+      "%dataFrom%", job.dates.start);
+    if (job.dates.end === "") {
       formattedWorkDates = formattedWorkDates.replace("%dataTo%", "");
     }
     else {
       formattedWorkDates = formattedWorkDates.replace("%dataTo%",
-        " - " + this.jobs[job].dates.end);
+        " - " + job.dates.end);
     }
 
     var formattedWorkLocation = HTMLworkLocation.replace(
-      "%data%", this.jobs[job].location);
+      "%data%", job.location);
 
     var formattedWorkDescr = HTMLworkDescription.replace(
-      "%data%", this.jobs[job].description);
+      "%data%", job.description);
 
     // Note that append() requires complete HTML elements; partial elements
     // like '<a href="#">Bitcontrol GmbH' will be completed with a '</a>'
@@ -164,7 +170,7 @@ work.display = function() { // Define display() function
       + formattedWorkDates
       + formattedWorkLocation
       + formattedWorkDescr);
-  }
+  });
 };
 
 work.display(); // Run display() function
@@ -181,8 +187,11 @@ var projects = {
         "start": "Feb-2015"
       },
       "description": "Repair an existing PRIGo device and calibrate it.<br>The repair includes mechanics, hardware, software and configuration. The device is part of the Macro-Molecular X-ray beamline X06DA at the Swiss Light Source.",
-      "images": ["images/SLS_X06DA_Prigo_500x250.jpg"
-      ]
+      "images": [{
+        "src": "images/SLS_X06DA_Prigo_500x250.jpg",
+        "altText": "Picture of the experimental station at SLS/X06DA beamline",
+        "titleText": "Experimental station at the X06DA beamline showing the blue/black PRIGo III goniometer. Swiss Light Source, Switzerland."
+      }]
     },
     {
       "title": "Smart Magnet Controller",
@@ -190,9 +199,12 @@ var projects = {
         "end": "Jan-2015",
         "start": "Feb-2014"
       },
-      "description": "Design and create a product for the Macro-Molecular X-ray beamlines at the Swiss Light Source.<br>The device controls the electrical current through the sample holder coil at the endstation and senses if a sample pin is mounted or not. It returns this information to the control system.",
-      "images": ["images/Bitcontrol_SMC_frontView_375x250.jpg"
-      ]
+      "description": "Design and create a product for the Macro-Molecular X-ray beamlines at the Swiss Light Source.<br>The device controls the electrical current through the sample holder coil at the experimental station and senses if a sample pin is mounted or not. It returns this information to the control system.",
+      "images": [{
+        "src": "images/Bitcontrol_SMC_frontView_375x250.jpg",
+        "altText": "Picture of the Smart Magnet Controller",
+        "titleText": "Front view of the Smart Magnet Controller showing the buttons and LEDs for local operation. Bitcontrol GmbH, Switzerland."
+      }]
     },
     {
       "title": "Light Controller Application",
@@ -201,8 +213,7 @@ var projects = {
         "start": "Aug-2013"
       },
       "description": "Design, implement, test and document a software for a light controller.<br>The controller has these features: form size: electronic cut-in unit, DALI inputs and outputs, , STM32 type micro-controller, bootstrap loader, NV configuration block, RS-485 bus, sensor bus, and more.<br>The device is used throughout the main product portfolio of a large industrial lighting company.",
-      "images": [
-      ]
+      "images": []
     },
     {
       "title": "Digitally Addressable Light Interface (DALI) Ballast Stack",
@@ -211,8 +222,7 @@ var projects = {
         "start": "Jun-2013"
       },
       "description": "Design, implement, test and document a DALI ballast software stack for a light controller according to the international DALI specifications.<br>The device is used in light controllers of a large industrial lighting company.",
-      "images": [
-      ]
+      "images": []
     },
     {
       "title": "Unmanned Aerial Vehicle (UAS) Software",
@@ -221,8 +231,7 @@ var projects = {
         "start": "Oct-2011"
       },
       "description": "Design, implement, test and document UAS software in a research environment.",
-      "images": [
-      ]
+      "images": []
     },
     {
       "title": "Data Acquisition (DAQ) Software Framework",
@@ -231,8 +240,7 @@ var projects = {
         "start": "Feb-2011"
       },
       "description": "Port a large scientific DAQ framework from the Diamond Light Source in the UK to the Swiss Light Source.<br>The framework is based on Java/Eclipse and its Rich Client Platform (RCP) plugin mechanism.",
-      "images": [
-      ]
+      "images": []
     },
     {
       "title": "Beamline Data Acquisition and Control Systems",
@@ -241,8 +249,11 @@ var projects = {
         "start": "Feb-2005"
       },
       "description": "Design, implement and test data acquisition and motion control systems for various beamlines at the Swiss Light Source.<br>Order and commission the hardware and implement the software of the control systems for the beamlines X02DA (TOMCAT), X10DA () and X06DA (MXIII).<br>Integrate many off-the-shelf as well as highly specific components as a major part of the work.<br>EPICS has been used as motion control framework, C/C++ and Java for programming.",
-      "images": ["images/SLS_X09LA_experimentationChamber_444x250.jpg"
-      ]
+      "images": [{
+        "src": "images/SLS_X09LA_experimentationChamber_444x250.jpg",
+        "altText": "Picture of experimentation chamber",
+        "titleText": "Experimentation chamber at the X09LA beamline. Swiss Light Source, Switzerland."
+      }]
     },
     {
       "title": "Oncology On-Board Imaging",
@@ -251,54 +262,60 @@ var projects = {
         "start": "2003"
       },
       "description": "Lead a team of four software engineers technically.<br>Design the motion control system for the On-Board Imaging system and lead the project through the prototype phase to a large exhibition show in Salt Lake City, Utah.<br>The project involved various trips to the US.",
-      "images": ["images/VarianOBI_480x250.jpg"
-      ]
+      "images": [{
+        "src": "images/VarianOBI_480x250.jpg",
+        "altText": "Picture of a Clinac with an On-Board Imaging System",
+        "titleText": "An On-Board Imaging System (left and right elements) on a Clinac. Varian Medical Systems, United States."
+      }]
     },
     {
       "title": "Radiotherapy Treatment Simulator",
       "dates": {
         "end": "2003",
-        "start": "2001"
+        "start": "2000"
       },
       "description": "Integrate the imaging detector robot arm into the treatment simulator as far as motion control is concerned.<br>The project involved various trips to the UK.",
-      "images": ["images/VarianAcuity_480x250.jpg"
-      ]
+      "images": [{
+        "src": "images/VarianAcuity_480x250.jpg",
+        "altText": "Picture of an Acuity treatment simulator",
+        "titleText": "Acuity treatment simulation system. Varian Medical Systems, United States."
+      }]
     }
   ]
 };
 
 projects.display = function() { // Define display() function
-  for (var project in this.projects) {
+  this.projects.forEach(function (project) {
     $("#projects").append(HTMLprojectStart);
 
     var formattedProjectTitle = HTMLprojectTitle.replace(
-      "%data%", this.projects[project].title);
+      "%data%", project.title);
 
     var formattedProjectDates = HTMLprojectDates.replace(
-      "%dataFrom%", this.projects[project].dates.start);
-    if (this.projects[project].dates.end === "") {
+      "%dataFrom%", project.dates.start);
+    if (project.dates.end === "") {
       formattedProjectDates = formattedProjectDates.replace("%dataTo%", "");
     }
     else {
       formattedProjectDates = formattedProjectDates.replace("%dataTo%",
-        " - " + this.projects[project].dates.end);
+        " - " + project.dates.end);
     }
 
     var formattedProjectDescr = HTMLprojectDescription.replace(
-      "%data%", this.projects[project].description);
+      "%data%", project.description);
 
     $(".project-entry:last").append(formattedProjectTitle
       + formattedProjectDates
       + formattedProjectDescr);
 
-    if (this.projects[project].images.length > 0) {
-      for (var image in this.projects[project].images) {
-        var formattedProjectImage = HTMLprojectImage.replace(
-          "%data%", this.projects[project].images[image]);
-        $(".project-entry:last").append(formattedProjectImage);
-      }
-    }
-  }
+    project.images.forEach(function (image) {
+      var formattedProjectImage = HTMLprojectImage.replace(
+        "%data%", image.src)
+        .replace("%altText%", image.altText)
+        .replace("%titleText%", image.titleText);
+      $(".project-entry:last").append(formattedProjectImage);
+    });
+  });
 };
 
 projects.display(); // Run display() function
@@ -363,32 +380,33 @@ var education = {
 };
 
 education.display = function() { // Define display() function
-  for (var school in this.schools) {
+  this.schools.forEach(function(school) {
     $("#education").append(HTMLschoolStart);
 
     var formattedSchoolName = HTMLschoolName.replace(
-      "%data%", this.schools[school].name);
+      "%data%", school.name).replace(
+      "#", school.url);
 
     var formattedSchoolDegree = HTMLschoolDegree.replace(
-      "%data%", this.schools[school].degree);
+      "%data%", school.degree);
 
     var formattedSchoolDates = HTMLschoolDates.replace(
-      "%dataFrom%", this.schools[school].dates.start);
-    if (this.schools[school].dates.end === "") {
+      "%dataFrom%", school.dates.start);
+    if (school.dates.end === "") {
       formattedSchoolDates = formattedSchoolDates.replace("%dataTo%", "");
     }
     else {
       formattedSchoolDates = formattedSchoolDates.replace("%dataTo%",
-        " - " + this.schools[school].dates.end);
+        " - " + school.dates.end);
     }
 
     var formattedSchoolLocation = HTMLschoolLocation.replace(
-      "%data%", this.schools[school].location);
+      "%data%", school.location);
 
     var majors = "";
-    for (major in this.schools[school].majors) {
-      majors += this.schools[school].majors[major] + ", ";
-    }
+    school.majors.forEach(function (major) {
+      majors += major + ", ";
+    });
     majors = majors.substring(0, majors.length-2);
     var formattedSchoolMajors = HTMLschoolMajors.replace(
       "%data%", majors);
@@ -398,7 +416,7 @@ education.display = function() { // Define display() function
       + formattedSchoolDates
       + formattedSchoolLocation
       + formattedSchoolMajors);
-  }
+  });
 }
 
 education.display(); // Run display() function
@@ -408,14 +426,3 @@ Google Map.
 */
 // Displays a Google map indicating the cities I've been educated and worked in
 $("#mapDiv").append(googleMap);
-
-// // TODO: Remove or comment when done with excercise; 23-Oct-2015/ais
-// $("#main").append(internationalizeButton);
-
-// /* Assumes the name format "firstname lastname". */
-// function inName() {
-//   var internationalizedName = bio.name.split(" ");
-//   internationalizedName[0].charAt(0).toUpperCase() + internationalizedName.slice(1);
-//   internationalizedName[1] = internationalizedName[1].toUpperCase();
-//   return internationalizedName[0] + " " + internationalizedName[1];
-// };
