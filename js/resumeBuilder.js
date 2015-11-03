@@ -31,7 +31,7 @@ bio.display = function() { // Define display() function
   $("#header").prepend(formattedRole);
   var formattedName = HTMLheaderName.replace("%data%", this.name);
   $("#header").prepend(formattedName);
-  var formattedBioPic = HTMLbioPic.replace("%data%", "images/portraitAndreas.jpg")
+  var formattedBioPic = HTMLbioPic.replace("%data%", "images/portraitAndreas_300x300.jpg")
     .replace(/%name%/g, this.name);
   $("#header").append(formattedBioPic);
   var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", this.welcomeMessage);
@@ -40,7 +40,7 @@ bio.display = function() { // Define display() function
   if (this.skills.length > 0) {
     $("#header").append(HTMLskillsStart);
 
-    for (var i=0; i<this.skills.length && i<4; i+=1) {
+    for (var i=0; i<this.skills.length && i<6; i+=1) { // Limit to 6 skills
       var formattedSkill = HTMLskills.replace("%data%", this.skills[i]);
       $("#skills").append(formattedSkill);
     }
@@ -316,6 +316,9 @@ projects.display = function() { // Define display() function
       $(".project-entry:last").append(formattedProjectImage);
     });
   });
+  // Add <div> element around project description and images for
+  // showing/hiding them
+  $(".projDesc, .projImg").wrap("<div class='hiddenOnLoad'></div>");
 };
 
 projects.display(); // Run display() function
@@ -426,3 +429,33 @@ Google Map.
 */
 // Displays a Google map indicating the cities I've been educated and worked in
 $("#mapDiv").append(googleMap);
+
+/*
+This function is executed when the page has loaded.
+*/
+$(document).ready(function() {
+  // Show/hide links of projects
+  var showLessText = "Click to see less information";
+  var showMoreText = "Click to see more information";
+
+  $(".hideShowLink").click(function() {
+    if($(this).hasClass("less")) {
+      $(this).removeClass("less");
+      $(this).attr('title', showMoreText);
+      var item = $(this).next().next(); // Skip div date-text
+      do {
+        item.hide("slow");
+        item = item.next();
+      } while (item.hasClass("hiddenOnLoad"));
+    } else {
+      $(this).addClass("less");
+      $(this).attr('title', showLessText);
+      var item = $(this).next().next(); // Skip div date-text
+      do {
+        item.show("slow");
+        item = item.next();
+      } while (item.hasClass("hiddenOnLoad"));
+    }
+  });
+  $(".hideShowLink").attr("title", showMoreText);
+});

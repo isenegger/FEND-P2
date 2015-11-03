@@ -24,7 +24,7 @@ var HTMLlocation =        '<li class="flex-item"><span class="orange-text">locat
 var HTMLbioPic = '<img class="biopic" src="%data%" alt="Picture of %name%" title="%name%">';
 var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
 
-var HTMLskillsStart = '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills" class="flex-box"></ul>';
+var HTMLskillsStart = '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills" class="flex-box-column"></ul>';
 var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
 
 var HTMLworkStart = '<div class="work-entry"></div>';
@@ -35,10 +35,10 @@ var HTMLworkLocation = '<div class="location-text">%data%</div>';
 var HTMLworkDescription = '<p><br>%data%</p>';
 
 var HTMLprojectStart = '<div class="project-entry"></div>';
-var HTMLprojectTitle = '<a href="javascript:;">%data%</a>';
+var HTMLprojectTitle = '<a href="javascript:;" class="hideShowLink">%data%</a>';
 var HTMLprojectDates = '<div class="date-text">%dataFrom%%dataTo%</div>';
-var HTMLprojectDescription = '<p><br>%data%</p>';
-var HTMLprojectImage = '<img src="%data%" alt="%altText%" title="%titleText%">';
+var HTMLprojectDescription = '<p class="projDesc"><br>%data%</p>';
+var HTMLprojectImage = '<img src="%data%" class="projImg" alt="%altText%" title="%titleText%">';
 
 var HTMLschoolStart = '<div class="education-entry"></div>';
 var HTMLschoolName = '<a href="#" target="_blank">%data%';

@@ -21,6 +21,7 @@ h6 {
 .education-entry,
 .work-entry,
 .project-entry {
+  margin-bottom: 20px;
   padding: 0 5%;
 }
 
@@ -101,6 +102,7 @@ a {
   font-size: 18px;
   color: #f3f3f3;
   line-height: 28px;
+  display: none;
 }
 
 #skills-h3 {
@@ -144,6 +146,15 @@ a {
   padding: 10px;
 }
 
+.flex-box-column {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px;
+}
+
 .center-content {
   padding: 2.5% 5%;
 }
@@ -156,6 +167,9 @@ ul {
   float: left;
   padding: 10px;
   width: 200px;
+}
+
+.hiddenOnLoad {
   display: none;
 }
 
@@ -192,8 +206,14 @@ span {
   .biopic {
     width: 150px;
   }
-  .welcome-message {
-    display: none;
+}
+
+@media only screen and (max-width: 480px) {
+  #lets-connect {
+    margin-top: 15%;
+  }
+  .biopic {
+    width: 120px;
   }
 }
 
@@ -209,9 +229,9 @@ span {
   padding-bottom: 5%;
 }
 
-@media only screen and (min-width: 750px) {
+@media only screen and (min-width: 480px) {
   #skills-h3,
-  .biopic {
+  .welcome-message {
     display: block;
   }
 }
