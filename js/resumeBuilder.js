@@ -90,7 +90,7 @@ var work = {
       "employer": "Bitcontrol GmbH",
       "url": "http://bitcontrol.ch",
       "title": "Managing Director and Software Engineer",
-      "location": "Baden, Switzerland",
+      "locations": ["Baden, Switzerland"],
       "dates": {
         "end": "today",
         "start": "Jun-2013"
@@ -101,7 +101,7 @@ var work = {
       "employer": "RUAG Aviation",
       "url": "http://www.ruag.com/aviation/aviation-home/",
       "title": "Software Engineer",
-      "location": "Emmen, Switzerland",
+      "locations": ["Emmen, Switzerland"],
       "dates": {
         "end": "Mar-2013",
         "start": "Oct-2011"
@@ -112,7 +112,7 @@ var work = {
       "employer": "Paul Scherrer Institute",
       "url": "https://www.psi.ch/sls/",
       "title": "Team Leader, Software Engineer",
-      "location": "Villigen, Switzerland",
+      "locations": ["Villigen, Switzerland"],
       "dates": {
         "end": "Sep-2011",
         "start": "Feb-2005"
@@ -123,7 +123,7 @@ var work = {
       "employer": "Varian Medical Systems Imaging Laboratory GmbH",
       "url": "https://www.varian.com/oncology",
       "title": "Project Leader, Development Engineer",
-      "location": "Daettwil, Switzerland",
+      "locations": ["Daettwil, Switzerland", "Crawley, UK", "PaloAlto, US"],
       "dates": {
         "end": "Dec-2004",
         "start": "Apr-1999"
@@ -154,9 +154,14 @@ work.display = function() { // Define display() function
         " - " + job.dates.end);
     }
 
-    var formattedWorkLocation = HTMLworkLocation.replace(
-      "%data%", job.location);
+    var locs = "";
+    job.locations.forEach(function (location) {
+      locs += location + "; ";
+    });
+    locs = locs.substring(0, locs.length-2);
 
+    formattedWorkLocation = HTMLworkLocation.replace(
+      "%data%", locs);
     var formattedWorkDescr = HTMLworkDescription.replace(
       "%data%", job.description);
 

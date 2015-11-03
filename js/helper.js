@@ -28,7 +28,7 @@ var HTMLskillsStart = '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills
 var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
 
 var HTMLworkStart = '<div class="work-entry"></div>';
-var HTMLworkEmployer = '<a href="#" target="_blank">%data%';
+var HTMLworkEmployer = '<a href="#" title="Click to see home page" target="_blank">%data%';
 var HTMLworkTitle = ' - %data%</a>';
 var HTMLworkDates = '<div class="date-text">%dataFrom%%dataTo%</div>';
 var HTMLworkLocation = '<div class="location-text">%data%</div>';
@@ -41,7 +41,7 @@ var HTMLprojectDescription = '<p class="projDesc"><br>%data%</p>';
 var HTMLprojectImage = '<img src="%data%" class="projImg" alt="%altText%" title="%titleText%">';
 
 var HTMLschoolStart = '<div class="education-entry"></div>';
-var HTMLschoolName = '<a href="#" target="_blank">%data%';
+var HTMLschoolName = '<a href="#" title="Click to see home page" target="_blank">%data%';
 var HTMLschoolDegree = ' -- %data%</a>';
 var HTMLschoolDates = '<div class="date-text">%dataFrom%%dataTo%</div>';
 var HTMLschoolLocation = '<div class="location-text">%data%</div>';
@@ -117,15 +117,17 @@ function initializeMap() {
 
     // iterates through school locations and appends each location to
     // the locations array
-    for (var school in education.schools) {
-      locations.push(education.schools[school].location);
-    }
+    education.schools.forEach(function (school) {
+      locations.push(school.location);
+    });
 
     // iterates through work locations and appends each location to
     // the locations array
-    for (var job in work.jobs) {
-      locations.push(work.jobs[job].location);
-    }
+    work.jobs.forEach(function (job) {
+      job.locations.forEach(function (location) {
+        locations.push(location);
+      });
+    });
 
     return locations;
   }
